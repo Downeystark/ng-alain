@@ -4,9 +4,9 @@
     "description": "Ng-zorro admin panel front-end framework"
   },
   "user": {
-    "name": "Admin",
+    "name": "downey",
     "avatar": "./assets/tmp/img/avatar.jpg",
-    "email": "cipchk@qq.com"
+    "email": "downeyin@qq.com"
   },
   "menu": [
     {
@@ -344,6 +344,39 @@
               "text": "Poi",
               "link": "/extras/poi",
               "i18n": "menu.extras.poi"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "text": "系统",
+      "i18n": "系统",
+      "group": true,
+      "hideInBreadcrumb": true,
+      "children": [
+        {
+          "text": "权限管理",
+          "i18n": "权限管理",
+          "icon": "anticon-cloud",
+          "children": [
+            {
+              "text": "接口管理",
+              "link": "/sys/interface",
+              "i18n": "接口管理",
+              "reuse": false
+            },
+            {
+              "text": "角色管理",
+              "link": "/sys/rule",
+              "i18n": "角色管理",
+              "reuse": false
+            },
+            {
+              "text": "日志管理",
+              "link": "/sys/log",
+              "i18n": "日志管理",
+              "reuse": false
             }
           ]
         }

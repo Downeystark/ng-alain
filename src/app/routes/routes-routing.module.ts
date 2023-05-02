@@ -30,7 +30,8 @@ const routes: Routes = [
       { path: 'style', loadChildren: () => import('./style/style.module').then(m => m.StyleModule) },
       { path: 'delon', loadChildren: () => import('./delon/delon.module').then(m => m.DelonModule) },
       { path: 'extras', loadChildren: () => import('./extras/extras.module').then(m => m.ExtrasModule) },
-      { path: 'pro', loadChildren: () => import('./pro/pro.module').then(m => m.ProModule) }
+      { path: 'pro', loadChildren: () => import('./pro/pro.module').then(m => m.ProModule) },
+      { path: 'sys', loadChildren: () => import('./sys/sys.module').then(m => m.SysModule) }
     ]
   },
   // Blak Layout 空白布局
@@ -40,7 +41,11 @@ const routes: Routes = [
     children: [{ path: '', loadChildren: () => import('./data-v/data-v.module').then(m => m.DataVModule) }]
   },
   // passport
-  { path: '', loadChildren: () => import('./passport/passport.module').then(m => m.PassportModule), data: { preload: true } },
+  {
+    path: '',
+    loadChildren: () => import('./passport/passport.module').then(m => m.PassportModule),
+    data: { preload: true }
+  },
   { path: 'exception', loadChildren: () => import('./exception/exception.module').then(m => m.ExceptionModule) },
   { path: '**', redirectTo: 'exception/404' }
 ];
