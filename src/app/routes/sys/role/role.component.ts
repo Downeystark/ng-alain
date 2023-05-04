@@ -4,10 +4,10 @@ import { SFSchema } from '@delon/form';
 import { ModalHelper, _HttpClient } from '@delon/theme';
 
 @Component({
-  selector: 'app-sys-rule',
-  templateUrl: './rule.component.html'
+  selector: 'app-sys-role',
+  templateUrl: './role.component.html'
 })
-export class SysRuleComponent implements OnInit {
+export class SysRoleComponent implements OnInit {
   url = `/user`;
   searchSchema: SFSchema = {
     properties: {

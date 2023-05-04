@@ -362,13 +362,13 @@
           "children": [
             {
               "text": "接口管理",
-              "link": "/sys/interface",
+              "link": "/sys/permission",
               "i18n": "接口管理",
               "reuse": false
             },
             {
               "text": "角色管理",
-              "link": "/sys/rule",
+              "link": "/sys/role",
               "i18n": "角色管理",
               "reuse": false
             },

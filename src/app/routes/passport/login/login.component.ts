@@ -10,6 +10,8 @@ import { environment } from '@env/environment';
 import { NzTabChangeEvent } from 'ng-zorro-antd/tabs';
 import { finalize } from 'rxjs';
 
+import { API } from '../../../configs/api.config';
+
 @Component({
   selector: 'passport-login',
   templateUrl: './login.component.html',
@@ -102,7 +104,7 @@ export class UserLoginComponent implements OnDestroy {
     this.cdr.detectChanges();
     this.http
       .post(
-        '/v1/api/login',
+        API.V1_LOGIN,
         {
           type: this.type,
           phone: this.form.value.mobile,

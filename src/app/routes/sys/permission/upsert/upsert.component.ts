@@ -5,36 +5,31 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 
 @Component({
-  selector: 'app-sys-rule-upsert',
+  selector: 'app-sys-permission-upsert',
   templateUrl: './upsert.component.html'
 })
-export class SysRuleUpsertComponent implements OnInit {
+export class SysPermissionUpsertComponent implements OnInit {
   record: any = {};
   i: any;
   schema: SFSchema = {
     properties: {
-      no: { type: 'string', title: '编号' },
-      owner: { type: 'string', title: '姓名', maxLength: 15 },
-      callNo: { type: 'number', title: '调用次数' },
-      href: { type: 'string', title: '链接', format: 'uri' },
-      description: { type: 'string', title: '描述', maxLength: 140 }
+      no: { type: 'string', title: 'id' },
+      title: { type: 'string', title: '名称', maxLength: 15 },
+      owner: { type: 'string', title: '简称' },
+      href: { type: 'string', title: '接口地址', format: 'uri' }
     },
-    required: ['owner', 'callNo', 'href', 'description']
+    required: ['title', 'owner', 'href']
   };
   ui: SFUISchema = {
     '*': {
       spanLabelFixed: 100,
-      grid: { span: 12 }
+      grid: { span: 24 }
     },
     $no: {
       widget: 'text'
     },
     $href: {
       widget: 'string'
-    },
-    $description: {
-      widget: 'textarea',
-      grid: { span: 24 }
     }
   };
 

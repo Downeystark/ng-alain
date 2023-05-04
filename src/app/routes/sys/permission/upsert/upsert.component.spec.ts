@@ -1,19 +1,19 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SysRuleUpsertComponent } from './upsert.component';
+import { SysPermissionUpsertComponent } from './upsert.component';
 
-describe('SysRuleUpsertComponent', () => {
-  let component: SysRuleUpsertComponent;
-  let fixture: ComponentFixture<SysRuleUpsertComponent>;
+describe('SysPermissionUpsertComponent', () => {
+  let component: SysPermissionUpsertComponent;
+  let fixture: ComponentFixture<SysPermissionUpsertComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [SysRuleUpsertComponent]
+      declarations: [SysPermissionUpsertComponent]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SysRuleUpsertComponent);
+    fixture = TestBed.createComponent(SysPermissionUpsertComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

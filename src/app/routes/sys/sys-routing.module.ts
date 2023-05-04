@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { SysInterfaceComponent } from './interface/interface.component';
-import { SysInterfaceUpsertComponent } from './interface/upsert/upsert.component';
 import { SysLogEditComponent } from './log/edit/edit.component';
 import { SysLogComponent } from './log/log.component';
 import { SysLogViewComponent } from './log/view/view.component';
-import { SysRuleComponent } from './rule/rule.component';
-import { SysRuleUpsertComponent } from './rule/upsert/upsert.component';
+import { SysPermissionComponent } from './permission/permission.component';
+import { SysPermissionUpsertComponent } from './permission/upsert/upsert.component';
+import { SysRoleComponent } from './role/role.component';
+import { SysRoleUpsertComponent } from './role/upsert/upsert.component';
 
 const routes: Routes = [
   {
@@ -19,17 +19,17 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'rule',
+    path: 'role',
     children: [
-      { path: '', component: SysRuleComponent },
-      { path: 'upsert', component: SysRuleUpsertComponent }
+      { path: '', component: SysRoleComponent },
+      { path: 'upsert', component: SysRoleUpsertComponent }
     ]
   },
   {
-    path: 'interface',
+    path: 'permission',
     children: [
-      { path: '', component: SysInterfaceComponent },
-      { path: 'upsert', component: SysInterfaceUpsertComponent }
+      { path: '', component: SysPermissionComponent },
+      { path: 'upsert', component: SysPermissionUpsertComponent }
     ]
   }
 ];

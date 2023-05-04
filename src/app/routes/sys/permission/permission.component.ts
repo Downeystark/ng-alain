@@ -1,27 +1,38 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { STColumn, STComponent } from '@delon/abc/st';
+import { G2MiniBarData } from '@delon/chart/mini-bar';
 import { SFSchema } from '@delon/form';
 import { ModalHelper, _HttpClient } from '@delon/theme';
 
-import { SysInterfaceUpsertComponent } from './upsert/upsert.component';
+import { API } from '../../../configs/api.config';
+import { ST } from '../../../configs/st.config';
+import { SysPermissionUpsertComponent } from './upsert/upsert.component';
 
 @Component({
-  selector: 'app-sys-interface',
-  templateUrl: './interface.component.html'
+  selector: 'app-sys-permission',
+  templateUrl: './permission.component.html'
 })
-export class SysInterfaceComponent implements OnInit {
-  url = `/user`;
+export class SysPermissionComponent implements OnInit {
+  args = {};
+  body = {};
+  req = { ...ST.req, params: this.args, body: this.body };
+  res = { ...ST.res };
+  url = API.V1_PERMISSION_LIST;
+  ps = 20;
+  total = 0;
+  events: G2MiniBarData[] = [];
+  scroll = { y: 'calc(100vh - 230px)' };
   searchSchema: SFSchema = {
     properties: {
-      no: {
+      title: {
         type: 'string',
-        title: '编号'
+        title: '名称'
       }
     }
   };
   @ViewChild('st') private readonly st!: STComponent;
   columns: STColumn[] = [
-    { title: '编号', type: 'no', width: '50px' },
+    { title: 'NO.', type: 'no', width: '60px' },
     { title: '名称', type: 'number', width: '100px', index: 'title' },
     { title: '简称', type: '', width: '100px', index: 'owner' },
     { title: '接口地址', type: '', index: 'href' },
@@ -44,12 +55,12 @@ export class SysInterfaceComponent implements OnInit {
   ngOnInit(): void {}
 
   add(): void {
-    this.modal.createStatic(SysInterfaceUpsertComponent, { i: { id: 0 } }).subscribe(() => this.st.reload());
+    this.modal.createStatic(SysPermissionUpsertComponent, { i: { id: 0 } }).subscribe(() => this.st.reload());
   }
 
   edit(item: any): void {
     console.log(item);
-    this.modal.createStatic(SysInterfaceUpsertComponent, { i: { ...item } }, { size: 'md' }).subscribe(() => this.st.reload());
+    this.modal.createStatic(SysPermissionUpsertComponent, { i: { ...item } }, { size: 'md' }).subscribe(() => this.st.reload());
   }
 
   delete(item: any): void {
