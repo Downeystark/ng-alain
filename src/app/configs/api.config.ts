@@ -1,6 +1,6 @@
-const SERVER_URL_BASE = '';
-const SERVER_URL_v1 = `${SERVER_URL_BASE}/v1/api`;
-const SERVER_URL_v2 = `${SERVER_URL_BASE}/v2/api`;
+const SERVER_URL_BASE = '/api';
+const SERVER_URL_v1 = `${SERVER_URL_BASE}/v1`;
+const SERVER_URL_v2 = `${SERVER_URL_BASE}/v2`;
 
 export const API = {
   // API v1

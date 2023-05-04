@@ -21,7 +21,7 @@ export class SysPermissionComponent implements OnInit {
   ps = 20;
   total = 0;
   events: G2MiniBarData[] = [];
-  scroll = { y: 'calc(100vh - 230px)' };
+  scroll = { y: 'calc(100vh - 440px)' };
   searchSchema: SFSchema = {
     properties: {
       title: {
@@ -32,13 +32,14 @@ export class SysPermissionComponent implements OnInit {
   };
   @ViewChild('st') private readonly st!: STComponent;
   columns: STColumn[] = [
-    { title: 'NO.', type: 'no', width: '60px' },
-    { title: '名称', type: 'number', width: '100px', index: 'title' },
-    { title: '简称', type: '', width: '100px', index: 'owner' },
-    { title: '接口地址', type: '', index: 'href' },
-    { title: '创建时间', type: 'date', index: 'updatedAt' },
+    { title: 'NO.', width: '60px', index: 'id' },
+    { title: '名称', type: 'number', width: '120px', index: 'name' },
+    { title: '简称', type: '', width: '150px', index: 'describes' },
+    { title: '接口地址', type: '', index: 'url' },
+    { title: '更新时间', type: 'date', width: '250px', index: 'updateTime' },
     {
       title: '',
+      width: '150px',
       buttons: [
         // { text: '查看', click: (item: any) => `/form/${item.id}` },
         {
@@ -60,7 +61,9 @@ export class SysPermissionComponent implements OnInit {
 
   edit(item: any): void {
     console.log(item);
-    this.modal.createStatic(SysPermissionUpsertComponent, { i: { ...item } }, { size: 'md' }).subscribe(() => this.st.reload());
+    this.modal
+      .createStatic(SysPermissionUpsertComponent, { record: item, i: { ...item } }, { size: 'md' })
+      .subscribe(() => this.st.reload());
   }
 
   delete(item: any): void {

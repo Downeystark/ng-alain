@@ -9,7 +9,7 @@ const req: STReq = {
   body: {}
 };
 const res = {
-  reName: { list: 'rows' }
+  reName: { list: 'data.rows', total: 'data.total' }
 };
 
 export const ST = {
