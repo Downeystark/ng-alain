@@ -49,7 +49,7 @@ export class SysPermissionUpsertComponent implements OnInit {
   }
 
   save(value: any): void {
-    this.http.post(API.V1_PERMISSION_UPDATE, value).subscribe(res => {
+    this.http.post(this.record.id > 0 ? API.V1_PERMISSION_UPDATE : API.V1_PERMISSION_INSERT, value).subscribe(res => {
       if (res.code !== 200) {
         this.msgSrv.error('保存数据失败');
         return;

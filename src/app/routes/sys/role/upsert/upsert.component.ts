@@ -4,6 +4,8 @@ import { _HttpClient } from '@delon/theme';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 
+import { API } from '../../../../configs/api.config';
+
 @Component({
   selector: 'app-sys-role-upsert',
   templateUrl: './upsert.component.html'
@@ -13,39 +15,42 @@ export class SysRoleUpsertComponent implements OnInit {
   i: any;
   schema: SFSchema = {
     properties: {
-      no: { type: 'string', title: '编号' },
-      owner: { type: 'string', title: '姓名', maxLength: 15 },
-      callNo: { type: 'number', title: '调用次数' },
-      href: { type: 'string', title: '链接', format: 'uri' },
-      description: { type: 'string', title: '描述', maxLength: 140 }
+      id: { type: 'string', title: 'id' },
+      name: { type: 'string', title: '名称', maxLength: 30 },
+      describes: { type: 'string', title: '简称', maxLength: 20 }
     },
-    required: ['owner', 'callNo', 'href', 'description']
+    required: ['id', 'name', 'describes']
   };
   ui: SFUISchema = {
     '*': {
       spanLabelFixed: 100,
-      grid: { span: 12 }
-    },
-    $no: {
-      widget: 'text'
-    },
-    $href: {
-      widget: 'string'
-    },
-    $description: {
-      widget: 'textarea',
       grid: { span: 24 }
+    },
+    $id: {
+      widget: 'text'
     }
   };
 
   constructor(private modal: NzModalRef, private msgSrv: NzMessageService, public http: _HttpClient) {}
 
   ngOnInit(): void {
-    if (this.record.id > 0) this.http.get(`/user/${this.record.id}`).subscribe(res => (this.i = res));
+    if (this.record.id > 0)
+      this.http.get(API.V1_ROLE_GET, { id: this.record.id }).subscribe(res => {
+        if (res.code !== 200) {
+          this.msgSrv.error('获取数据失败');
+          return;
+        }
+        this.i = res.data;
+      });
   }
 
   save(value: any): void {
-    this.http.post(`/user/${this.record.id}`, value).subscribe(res => {
+    // if (value.id === 0) delete value.id;
+    this.http.post(this.record.id > 0 ? API.V1_ROLE_UPDATE : API.V1_ROLE_INSERT, value).subscribe(res => {
+      if (res.code !== 200) {
+        this.msgSrv.error('保存数据失败');
+        return;
+      }
       this.msgSrv.success('保存成功');
       this.modal.close(true);
     });
