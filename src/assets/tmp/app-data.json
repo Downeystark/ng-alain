@@ -350,6 +350,44 @@
       ]
     },
     {
+      "text": "业务",
+      "i18n": "业务",
+      "group": true,
+      "hideInBreadcrumb": true,
+      "children": [
+        {
+          "text": "用户管理",
+          "i18n": "用户管理",
+          "icon": "anticon-user",
+          "link": "/bus/user"
+        },
+        {
+          "text": "项目管理",
+          "i18n": "项目管理",
+          "icon": "anticon-project",
+          "link": "/bus/project"
+        },
+        {
+          "text": "任务管理",
+          "i18n": "任务管理",
+          "icon": "anticon-task",
+          "link": "/bus/task"
+        },
+        {
+          "text": "合同管理",
+          "i18n": "合同管理",
+          "icon": "anticon-contract",
+          "link": "/bus/contract"
+        },
+        {
+          "text": "日报管理",
+          "i18n": "日报管理",
+          "icon": "anticon-report",
+          "link": "/bus/report"
+        }
+      ]
+    },
+    {
       "text": "系统",
       "i18n": "系统",
       "group": true,
@@ -358,7 +396,7 @@
         {
           "text": "权限管理",
           "i18n": "权限管理",
-          "icon": "anticon-cloud",
+          "icon": "anticon-permission",
           "children": [
             {
               "text": "接口管理",

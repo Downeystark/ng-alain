@@ -21,33 +21,34 @@ const routes: Routes = [
       {
         path: 'dashboard',
         loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
-        data: { preload: true }
+        data: { preload: true },
       },
       {
         path: 'widgets',
-        loadChildren: () => import('./widgets/widgets.module').then(m => m.WidgetsModule)
+        loadChildren: () => import('./widgets/widgets.module').then(m => m.WidgetsModule),
       },
       { path: 'style', loadChildren: () => import('./style/style.module').then(m => m.StyleModule) },
       { path: 'delon', loadChildren: () => import('./delon/delon.module').then(m => m.DelonModule) },
       { path: 'extras', loadChildren: () => import('./extras/extras.module').then(m => m.ExtrasModule) },
       { path: 'pro', loadChildren: () => import('./pro/pro.module').then(m => m.ProModule) },
-      { path: 'sys', loadChildren: () => import('./sys/sys.module').then(m => m.SysModule) }
-    ]
+      { path: 'bus', loadChildren: () => import('./bus/bus.module').then(m => m.BusModule) },
+      { path: 'sys', loadChildren: () => import('./sys/sys.module').then(m => m.SysModule) },
+    ],
   },
   // Blak Layout 空白布局
   {
     path: 'data-v',
     component: LayoutBlankComponent,
-    children: [{ path: '', loadChildren: () => import('./data-v/data-v.module').then(m => m.DataVModule) }]
+    children: [{ path: '', loadChildren: () => import('./data-v/data-v.module').then(m => m.DataVModule) }],
   },
   // passport
   {
     path: '',
     loadChildren: () => import('./passport/passport.module').then(m => m.PassportModule),
-    data: { preload: true }
+    data: { preload: true },
   },
   { path: 'exception', loadChildren: () => import('./exception/exception.module').then(m => m.ExceptionModule) },
-  { path: '**', redirectTo: 'exception/404' }
+  { path: '**', redirectTo: 'exception/404' },
 ];
 
 @NgModule({
@@ -58,9 +59,9 @@ const routes: Routes = [
       // NOTICE: If you use `reuse-tab` component and turn on keepingScroll you can set to `disabled`
       // Pls refer to https://ng-alain.com/components/reuse-tab
       scrollPositionRestoration: 'top',
-      preloadingStrategy: PreloadOptionalModules
-    })
+      preloadingStrategy: PreloadOptionalModules,
+    }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class RouteRoutingModule {}

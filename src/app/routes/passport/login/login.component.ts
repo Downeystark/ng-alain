@@ -108,7 +108,7 @@ export class UserLoginComponent implements OnDestroy {
         {
           type: this.type,
           phone: this.form.value.mobile,
-          password: this.form.value.captcha
+          code: this.form.value.captcha
         },
         null,
         {
@@ -122,8 +122,8 @@ export class UserLoginComponent implements OnDestroy {
         })
       )
       .subscribe(res => {
-        if (res.code !== 200) {
-          this.error = res.msg;
+        if (res.status !== 200) {
+          this.error = res.message;
           this.cdr.detectChanges();
           return;
         }
@@ -131,7 +131,8 @@ export class UserLoginComponent implements OnDestroy {
         this.reuseTabService.clear();
         // 设置用户Token信息
         // TODO: Mock expired value
-        res.data.expired = +new Date() + 1000 * 60 * 60;
+        res.data.expired = +new Date() + res.data.expires;
+        // res.data.expired = +new Date() + 1000 * 60 * 60;
         this.tokenService.set(res.data);
         // 重新获取 StartupService 内容，我们始终认为应用信息一般都会受当前用户授权范围而影响
         this.startupSrv.load().subscribe(() => {
