@@ -1,0 +1,13 @@
+CREATE TABLE IF NOT EXISTS `auth_permission` (
+ `id` VARCHAR(255) NOT NULL COMMENT '权限UUID',
+ `name` VARCHAR(255) NOT NULL COMMENT '权限名称',
+ `content` VARCHAR(255) NOT NULL COMMENT '权限内容',
+ `value` VARCHAR(255) NOT NULL COMMENT '权限值',
+ `create_time` VARCHAR(255) NOT NULL COMMENT '创建时间',
+ `update_time` VARCHAR(255) NOT NULL COMMENT '更新时间',
+ `state` DOUBLE PRECISION NOT NULL COMMENT '数据状态值 -1 删除 0 失效 1 正常',
+ `status` DOUBLE PRECISION NOT NULL COMMENT '业务状态值',
+ `created_at` DATETIME NOT NULL,
+ `updated_at` DATETIME NOT NULL,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB COMMENT '接口权限' DEFAULT CHARSET=utf8mb4;
